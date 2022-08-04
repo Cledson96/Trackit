@@ -11,6 +11,7 @@ export default function Login() {
     const [carregando, setcarregando] = useState([]);
     const navigate = useNavigate();
 
+
     function handleForm({ value, name }) {
         setlogin({
             ...login,
@@ -21,14 +22,17 @@ export default function Login() {
     function verificar() {
         setcarregando(["referencia"])
         let resposta = postLogin(login);
-        resposta.then(() => navigate('/cadastro', {
-            state: {
-                login
-            },
-        }))
+        resposta.then((ref) => {
+            const autoriza = ref.data; navigate('/hoje', {
+                state: {
+                    autoriza
+                },
+            })
+        })
         resposta.catch(() => { setcarregando([]); alert("Não foi possivel realizar o login,verifique seus dados e tente novamente!") })
 
     };
+
 
 
     return (

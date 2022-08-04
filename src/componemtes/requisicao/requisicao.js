@@ -11,5 +11,14 @@ function postLogin (body) {
     return promise;
 }
 
+function postHoje (Authorization) {
+    
+    const promise = axios.get(`${BASE_URL}/habits/today`,{
+        headers: {
+          'Authorization': `Bearer ${Authorization}`
+        }
+      });
+    return promise;
+}
 
-export { postCadastro, postLogin };
+export { postCadastro, postLogin, postHoje};

@@ -1,16 +1,20 @@
-.fundo{
+.fundo {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: white;
 }
+
 .fundo img {
     margin-top: 68px;
     margin-bottom: 33px;
 }
+
 .fundo input {
     margin-bottom: 6px;
 }
-.fundo button{
+
+.fundo button {
     margin-bottom: 25px;
 }
