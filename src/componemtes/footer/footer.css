@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-  
+
 }
 
 .links {
@@ -19,5 +19,17 @@
     line-height: 22px;
     text-align: center;
     color: #52B6FF;
-   text-decoration: none;
+    text-decoration: none;
+}
+
+.porcent {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    position: fixed;
+    bottom: 55px;
+    right: calc((100vw / 2) - 17px);
 }

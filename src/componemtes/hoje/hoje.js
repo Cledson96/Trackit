@@ -5,33 +5,33 @@ import { postHoje } from "../requisicao/requisicao";
 import dayjs from "dayjs";
 import './hoje.css'
 import Footer from "../footer/footer";
-
-
-
-
+import UserContext from '../usercontext/UserContext'
 
 export default function Hoje() {
+  
+    let token = localStorage.getItem("token");
     const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado"];
-    const now = new Date;
-    const dia = days[now.getDay()]
-    const data = dayjs().format('DD/MM')
-    const [habitos, sethabitos] = useState([])
+    const now = new Date();
+    const dia = days[now.getDay()];
+    const data = dayjs().format('DD/MM');
+    const [habitos, sethabitos] = useState([]);
     const location = useLocation();
-    console.log(dia);
-    console.log(data);
-
-
-
+    const [tasks, setTasks] = useState([]);
+   
+    
     useEffect(() => {
-        postHoje(location.state.autoriza.token).then((res) => {
+        setTasks(location.state.autorize);
+        
+        postHoje(token).then((res) => {
             sethabitos(res.data)
         });
     }, []);
-
+   
     return (
         habitos.length === 0 ?
-            <>
-                <Topo img={location.state.autoriza.image} />
+            <UserContext.Provider value={{ tasks, setTasks }} >
+
+                <Topo img={location.state.autorize.image} />
                 <div className="fundo2">
                     <div className="date">
                         <h2>{dia},{data} </h2>
@@ -39,14 +39,20 @@ export default function Hoje() {
                     </div>
                     <Footer />
                 </div>
-            </>
+
+            </UserContext.Provider>
+
             :
-            <>
-                <Topo img={location.state.autoriza.image} />
+
+
+            <UserContext.Provider>
+                <Topo img={location.state.autorize.image} />
 
                 <div className="fundo2">
                     "Fundooooo"
                 </div>
-            </>
+            </UserContext.Provider>
+
+
     )
 }

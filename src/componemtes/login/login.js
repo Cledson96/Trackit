@@ -4,9 +4,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { postLogin } from '../requisicao/requisicao'
 import { useState } from 'react';
 
+
+
 import imgcarregando from '../../img/carregando.gif'
 
 export default function Login() {
+
     const [login, setlogin] = useState({});
     const [carregando, setcarregando] = useState([]);
     const navigate = useNavigate();
@@ -23,9 +26,11 @@ export default function Login() {
         setcarregando(["referencia"])
         let resposta = postLogin(login);
         resposta.then((ref) => {
-            const autoriza = ref.data; navigate('/hoje', {
+            const autorize = ref.data;
+            localStorage.setItem("token", ref.data.token);
+            navigate('/hoje', {
                 state: {
-                    autoriza
+                    autorize
                 },
             })
         })
@@ -48,6 +53,7 @@ export default function Login() {
                 <button onClick={verificar} className='confirmar'>Entrar</button>
                 <Link className='link' to={'/cadastro'}>Não tem uma conta? Cadastre-se!</Link>
             </div>
+
             :
             <div className="fundo">
                 <img alt="track" src={logo} />
