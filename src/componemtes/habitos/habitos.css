@@ -1,0 +1,109 @@
+.addHabitos {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 18px;
+
+}
+
+.addHabitos button {
+    width: 40px;
+    height: 35px;
+    background: #52B6FF;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26.976px;
+    line-height: 34px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.habitos {
+    width: 100%;
+    height: 100%;
+    margin-top: 28px;
+}
+
+.cadastrohabitos {
+    margin-top: 20px;
+    width: 340px;
+    height: 180px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    padding-top: 18px;
+    position: relative;
+}
+
+.dia {
+    width: 30px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    margin-right: 4px;
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19.976px;
+    line-height: 25px;
+    color: #DBDBDB;
+}
+
+.diaselecionado {
+    width: 30px;
+    height: 30px;
+    color: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    margin-right: 4px;
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19.976px;
+    line-height: 25px;
+    background: #DBDBDB;
+}
+
+.cancelar {
+    width: 84px;
+    height: 35px;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.976px;
+    line-height: 20px;
+    text-align: center;
+    color: #52B6FF;
+    background-color: #FFFFFF;
+}
+
+.salvar {
+    width: 84px;
+    height: 35px;
+    background: #52B6FF;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.976px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.confirma {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    right: 16px;
+    bottom: 15px;
+    width: 180px;
+    height: 36px;
+}

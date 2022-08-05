@@ -1,14 +1,14 @@
 import Topo from "../topo/topo"
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { postHoje } from "../requisicao/requisicao";
+import { getHoje } from "../requisicao/requisicao";
 import dayjs from "dayjs";
 import './hoje.css'
 import Footer from "../footer/footer";
-import UserContext from '../usercontext/UserContext'
 
-export default function Hoje() {
-  
+
+export default function Hoje({ setdados }) {
+
     let token = localStorage.getItem("token");
     const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado"];
     const now = new Date();
@@ -16,20 +16,21 @@ export default function Hoje() {
     const data = dayjs().format('DD/MM');
     const [habitos, sethabitos] = useState([]);
     const location = useLocation();
-    const [tasks, setTasks] = useState([]);
-   
-    
+
+    setdados(location.state.autorize);
+
+
+
     useEffect(() => {
-        setTasks(location.state.autorize);
-        
-        postHoje(token).then((res) => {
+
+        getHoje(token).then((res) => {
             sethabitos(res.data)
         });
-    }, []);
-   
+    }, [token]);
+
     return (
         habitos.length === 0 ?
-            <UserContext.Provider value={{ tasks, setTasks }} >
+            <>
 
                 <Topo img={location.state.autorize.image} />
                 <div className="fundo2">
@@ -40,19 +41,18 @@ export default function Hoje() {
                     <Footer />
                 </div>
 
-            </UserContext.Provider>
+            </>
 
             :
 
 
-            <UserContext.Provider>
+            <>
                 <Topo img={location.state.autorize.image} />
 
                 <div className="fundo2">
                     "Fundooooo"
                 </div>
-            </UserContext.Provider>
-
+            </>
 
     )
 }

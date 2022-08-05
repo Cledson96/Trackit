@@ -27,6 +27,8 @@ export default function Login() {
         let resposta = postLogin(login);
         resposta.then((ref) => {
             const autorize = ref.data;
+
+            console.log(ref.data)
             localStorage.setItem("token", ref.data.token);
             navigate('/hoje', {
                 state: {

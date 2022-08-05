@@ -11,7 +11,27 @@ function postLogin (body) {
     return promise;
 }
 
-function postHoje (Authorization) {
+function postHabitos (body,token) {
+  console.log(body);
+  console.log(token)
+  const promise = axios.post(`${BASE_URL}/habits`,body,{
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  return promise;
+}
+
+function getHabitos(Authorization){
+  const promise = axios.get(`${BASE_URL}/habits`,{
+    headers: {
+      'Authorization': `Bearer ${Authorization}`
+    }
+  });
+return promise;
+}
+
+function getHoje (Authorization) {
     
     const promise = axios.get(`${BASE_URL}/habits/today`,{
         headers: {
@@ -21,4 +41,4 @@ function postHoje (Authorization) {
     return promise;
 }
 
-export { postCadastro, postLogin, postHoje};
+export { postCadastro, postLogin, getHoje,getHabitos,postHabitos};
