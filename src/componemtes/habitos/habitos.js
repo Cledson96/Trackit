@@ -1,37 +1,51 @@
 import Footer from "../footer/footer"
 import Topo from "../topo/topo"
-import { getHabitos, postHabitos } from "../requisicao/requisicao"
+import { getHabitos, postHabitos, deleteHabitos } from "../requisicao/requisicao"
 import { useEffect, useState } from 'react';
 import './habitos.css'
 import lixeira from '../../img/lixeira.png'
 
 
-export default function Habitos({ dados }) {
-    const [habitos, sethabitos] = useState([]);
+export default function Habitos({ dados ,valor}) {
+    let token = localStorage.getItem("token");
+      const [habitos, sethabitos] = useState([]);
     const [add, setadd] = useState(false);
     const [novoHabito, setnovoHabito] = useState([]);
     const [dias, setdias] = useState([]);
     const [renderiza, setrenderiza] = useState(["ola"])
 
+    function deletaHabitos(props) {
+        if (window.confirm("Tem certeza que deseja excluis este hábito?")) {
+            let resposta = deleteHabitos(props, token);
+            resposta.then((res) => { console.log(res); setrenderiza(props) });
+            resposta.catch(()=>alert("Tivemos um problema para deletar seu habito!!"));
+        }
+
+    }
 
     function atualiza() {
         setdias([...dias,])
     }
 
     useEffect(() => {
-        getHabitos(dados.token).then((res) => {
+        let resposta = getHabitos(token)
+        resposta.then((res) => {
             sethabitos(res.data)
             console.log(res.data)
         });
-    }, [dados.token,add]);
+        resposta.catch(()=>alert("Tivemos um problema para atualizar seus habitos!!"))
+    }, [token,renderiza]);
 
     function enviahabitos() {
         let body = { ...novoHabito, days: dias }
-        postHabitos(body, dados.token).then(() => {
+        let resposta = postHabitos(body, token)
+        resposta.then(() => {
             setadd(false);
+            setrenderiza(body);
             setdias([])
-        })
-       
+        });
+        resposta.catch(()=>alert("Não foi possivel adicionar seu habito!!!"))
+
     };
 
 
@@ -82,7 +96,7 @@ export default function Habitos({ dados }) {
                             Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
                         </h3>
                     </div>
-                    <Footer />
+                    <Footer valor={valor} />
                 </div>
             </>
             :
@@ -121,9 +135,10 @@ export default function Habitos({ dados }) {
                     }
                     {
                         habitos.map((ref) => {
+
                             return (
                                 <div className="meushabitos">
-                                    <img alt="" src={lixeira} />
+                                    <img onClick={() => { deletaHabitos(ref.id) }} alt="" src={lixeira} />
                                     {ref.name}
                                     <div className="dias">
                                         {ref.days.findIndex(element => element === 0) === -1 ? <button className="dia"> D </button> : <button className="diaselecionado"> D </button>}
@@ -137,6 +152,7 @@ export default function Habitos({ dados }) {
                                 </div>)
                         })
                     }
+                    <Footer valor={valor} />
                 </div>
             </>
     )

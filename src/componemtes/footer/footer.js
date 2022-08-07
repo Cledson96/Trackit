@@ -5,17 +5,17 @@ import CircularProgress from '@mui/material/CircularProgress'
 
 
 
-export default function Footer() {
+export default function Footer({valor}) {
 
 
-    let props = { value: 90 }
+    let props = { value: valor}
 
     return (
         <div className="footer">
             <Link className='links' to={'/habitos'}>Hábitos</Link>
             <div className='porcentagem'>
                 <Link to={'/hoje'}> <CircularProgress size={"90px"} color="primary" variant="determinate" {...props} /></Link>
-                <h5 className='porcent'>Hoje</h5>
+                <Link to={'/hoje'}><h5 className='porcent'>Hoje</h5></Link> 
             </div>
 
             <Link className='links' to={'/historico'}>Histórico</Link>

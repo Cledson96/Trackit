@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 import imgcarregando from '../../img/carregando.gif'
 
-export default function Login() {
+export default function Login({setdados}) {
 
     const [login, setlogin] = useState({});
     const [carregando, setcarregando] = useState([]);
@@ -26,9 +26,8 @@ export default function Login() {
         setcarregando(["referencia"])
         let resposta = postLogin(login);
         resposta.then((ref) => {
+            setdados(ref.data)
             const autorize = ref.data;
-
-            console.log(ref.data)
             localStorage.setItem("token", ref.data.token);
             navigate('/hoje', {
                 state: {
@@ -39,8 +38,6 @@ export default function Login() {
         resposta.catch(() => { setcarregando([]); alert("Não foi possivel realizar o login,verifique seus dados e tente novamente!") })
 
     };
-
-
 
     return (
         carregando.length === 0 ?

@@ -10,6 +10,15 @@ function postLogin (body) {
     const promise = axios.post(`${BASE_URL}/auth/login`,body);
     return promise;
 }
+function deleteHabitos (id,token) {
+  console.log(id,token)
+  const promise = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,{
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  return promise;
+}
 
 function postHabitos (body,token) {
   console.log(body);
@@ -41,4 +50,25 @@ function getHoje (Authorization) {
     return promise;
 }
 
-export { postCadastro, postLogin, getHoje,getHabitos,postHabitos};
+function postFeito (id,token) {
+  console.log(id);
+  console.log(token)
+  const promise = axios.post(`${BASE_URL}/habits/${id}/check`,"",{
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  return promise;
+}
+function postDesfeito(id,token) {
+  console.log(id);
+  console.log(token)
+  const promise = axios.post(`${BASE_URL}/habits/${id}/uncheck`,"",{
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  return promise;
+}
+
+export { postCadastro, postLogin, getHoje,getHabitos,postHabitos,deleteHabitos,postFeito,postDesfeito};

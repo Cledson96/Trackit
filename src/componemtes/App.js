@@ -9,6 +9,7 @@ import Login from "./login/login";
 
 export default function App () {
     const [dados,setdados] = useState([])
+    const [valor,setvalor] = useState(0)
 
     return (
       <>
@@ -16,10 +17,10 @@ export default function App () {
             
                 <Routes>
 
-                    <Route path='/' element={<Login  />} />
+                    <Route path='/' element={<Login setdados={setdados}/>} />
                     <Route path='/cadastro' element={<Cadastro  />} />
-                    <Route path='/hoje' element={<Hoje setdados={setdados} />} />
-                    <Route path='/habitos' element={<Habitos  dados = {dados}/>} />
+                    <Route path='/hoje' element={<Hoje dados = {dados} valor = {valor} setvalor={setvalor} />} />
+                    <Route path='/habitos' element={<Habitos valor = {valor} dados = {dados}/>} />
                    
                 </Routes>
 

@@ -1,13 +1,14 @@
 import Topo from "../topo/topo"
-import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getHoje } from "../requisicao/requisicao";
+import { getHoje,postDesfeito,postFeito } from "../requisicao/requisicao";
 import dayjs from "dayjs";
 import './hoje.css'
 import Footer from "../footer/footer";
+import nike from "../../img/nike.png"
 
 
-export default function Hoje({ setdados }) {
+
+export default function Hoje({  dados ,valor, setvalor}) {
 
     let token = localStorage.getItem("token");
     const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado"];
@@ -15,39 +16,69 @@ export default function Hoje({ setdados }) {
     const dia = days[now.getDay()];
     const data = dayjs().format('DD/MM');
     const [habitos, sethabitos] = useState([]);
-    const location = useLocation();
-
-    setdados(location.state.autorize);
+    const [atualiza,setatualiza] = useState([]);
 
 
+    function confirma (id){
+        let resposta = postFeito(id,token)
+        resposta.then((ref)=>{setatualiza(ref);console.log(ref)})
+        resposta.catch((ref)=>{console.log(ref);alert("Não foi possivel completar sua requisição!")})
+    }
+    function desconfirma (id){
+        let resposta = postDesfeito(id,token)
+        resposta.then((ref)=>{setatualiza(ref);console.log(ref)})
+        resposta.catch((ref)=>{console.log(ref);alert("Não foi possivel completar sua requisição!")})
+    }
 
     useEffect(() => {
-
-        getHoje(token).then((res) => {
-            sethabitos(res.data)
+        let resposta = getHoje(token)
+        resposta.then((res) => {
+            sethabitos(res.data);
         });
-    }, [token]);
-
+        resposta.catch(() => alert("Tivemos um problema para recuperar seu habitos!!!"));
+    }, [atualiza]);
+    console.log(habitos)
     return (
         habitos.length === 0 ?
             <>
 
-                <Topo img={location.state.autorize.image} />
+                <Topo img={dados.image} />
                 <div className="fundo2">
                     <div className="date">
                         <h2>{dia},{data} </h2>
                         Nenhum hábito concluído ainda
                     </div>
-                    <Footer />
+                    <Footer valor={valor}/>
                 </div>
 
             </>
             :
             <>
-                <Topo img={location.state.autorize.image} />
+                <Topo img={dados.image} />
 
                 <div className="fundo2">
-                    "Fundooooo"
+                <div className="date">
+                        <h2>{dia},{data} </h2>
+                        Nenhum hábito concluído ainda
+                    </div>
+                    {habitos.map((ref,index) => {
+                        return (
+                            <div key={index} className="habitosHoje">
+                                <div className="info">
+                                    <h5 className="Name">{ref.name}</h5>
+                                    <div>
+                                   <div className="sequencia"><h4 className="sequencia" >Sequência atual:  </h4> {ref.done === true ? <h4 className="verde"> {ref.currentSequence}{ref.currentSequence === 1? "dia":"dias" }</h4>:<h4>{ref.currentSequence}{ref.currentSequence === 1? "dia":"dias" }</h4>}</div> 
+                                   <div className="sequencia"><h4 className="sequencia" > Seu recorde: </h4>{ref.currentSequence >= ref.highestSequence ? <h4 className="verde"> {ref.highestSequence} {ref.highestSequence === 1? "dia":"dias" } </h4>: <h4 >{ref.highestSequence} {ref.highestSequence === 1? "dia":"dias" } </h4>}</div> 
+
+                                    </div>
+                                   
+                                </div>
+                                {ref.done === false ? <div onClick={()=> {confirma(ref.id)}} className="aconfirmar"> <img alt="" src={nike} /> </div> : <div onClick={()=> {desconfirma(ref.id)}} className="confirmado"><img alt="" src={nike} /></div>}
+
+
+                            </div>
+                        )
+                    })}
                     <Footer />
                 </div>
             </>
