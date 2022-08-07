@@ -7,10 +7,6 @@ import Login from "./login/login";
 
 
 
-
-
-
-
 export default function App () {
     const [dados,setdados] = useState([])
 

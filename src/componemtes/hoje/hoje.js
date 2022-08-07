@@ -42,15 +42,13 @@ export default function Hoje({ setdados }) {
                 </div>
 
             </>
-
             :
-
-
             <>
                 <Topo img={location.state.autorize.image} />
 
                 <div className="fundo2">
                     "Fundooooo"
+                    <Footer />
                 </div>
             </>
 
