@@ -32,14 +32,27 @@
 
 .cadastrohabitos {
     margin-top: 20px;
-    width: 340px;
+    max-width: 600px;
     height: 180px;
     background: #FFFFFF;
     border-radius: 5px;
     display: flex;
-    justify-content: center;
     padding-top: 18px;
     position: relative;
+    justify-content: flex-start;
+    margin-right: 18px;
+  
+}
+
+.cadastrohabitos :first-child {
+    flex-wrap: wrap;
+    flex-direction: column;
+    display: flex;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: flex-start;
+
 }
 
 .meushabitos {
@@ -58,7 +71,7 @@
     font-size: 19.976px;
     line-height: 25px;
     color: #666666;
-    position: relative;
+    max-width: calc(100vw - 34px);
 
 }
 
@@ -83,6 +96,7 @@
     font-size: 19.976px;
     line-height: 25px;
     color: #DBDBDB;
+
 }
 
 .diaselecionado {
@@ -134,4 +148,11 @@
     bottom: 15px;
     width: 180px;
     height: 36px;
+}
+
+.dias {
+ 
+    max-height: 40px;
+    display: flex;
+    overflow: hidden;
 }

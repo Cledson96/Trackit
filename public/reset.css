@@ -44,3 +44,6 @@ table {
 button{
 	border-style: none;
 }
+*{
+	box-sizing: border-box;
+}

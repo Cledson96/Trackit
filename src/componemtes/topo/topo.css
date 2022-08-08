@@ -1,4 +1,6 @@
 .topo {
+    position: fixed;
+    top:0;
     padding-left: 18px;
     padding-right: 18px;
     display: flex;
@@ -9,6 +11,7 @@
     background: #126BA5;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     margin: 0;
+    z-index: 1000;
 }
 
 .topo img {

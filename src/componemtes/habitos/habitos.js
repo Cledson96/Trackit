@@ -6,9 +6,9 @@ import './habitos.css'
 import lixeira from '../../img/lixeira.png'
 
 
-export default function Habitos({ dados ,valor}) {
+export default function Habitos({ dados, valor }) {
     let token = localStorage.getItem("token");
-      const [habitos, sethabitos] = useState([]);
+    const [habitos, sethabitos] = useState([]);
     const [add, setadd] = useState(false);
     const [novoHabito, setnovoHabito] = useState([]);
     const [dias, setdias] = useState([]);
@@ -18,7 +18,7 @@ export default function Habitos({ dados ,valor}) {
         if (window.confirm("Tem certeza que deseja excluis este hábito?")) {
             let resposta = deleteHabitos(props, token);
             resposta.then((res) => { console.log(res); setrenderiza(props) });
-            resposta.catch(()=>alert("Tivemos um problema para deletar seu habito!!"));
+            resposta.catch(() => alert("Tivemos um problema para deletar seu habito!!"));
         }
 
     }
@@ -33,8 +33,8 @@ export default function Habitos({ dados ,valor}) {
             sethabitos(res.data)
             console.log(res.data)
         });
-        resposta.catch(()=>alert("Tivemos um problema para atualizar seus habitos!!"))
-    }, [token,renderiza]);
+        resposta.catch(() => alert("Tivemos um problema para atualizar seus habitos!!"))
+    }, [token, renderiza]);
 
     function enviahabitos() {
         let body = { ...novoHabito, days: dias }
@@ -44,7 +44,7 @@ export default function Habitos({ dados ,valor}) {
             setrenderiza(body);
             setdias([])
         });
-        resposta.catch(()=>alert("Não foi possivel adicionar seu habito!!!"))
+        resposta.catch(() => alert("Não foi possivel adicionar seu habito!!!"))
 
     };
 
@@ -96,8 +96,9 @@ export default function Habitos({ dados ,valor}) {
                             Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
                         </h3>
                     </div>
-                    <Footer valor={valor} />
+
                 </div>
+                <Footer valor={valor} />
             </>
             :
             <>
@@ -152,8 +153,9 @@ export default function Habitos({ dados ,valor}) {
                                 </div>)
                         })
                     }
-                    <Footer valor={valor} />
+
                 </div>
+                <Footer valor={valor} />
             </>
     )
 }

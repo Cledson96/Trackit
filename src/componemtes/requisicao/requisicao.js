@@ -70,5 +70,13 @@ function postDesfeito(id,token) {
   });
   return promise;
 }
+function getHistorico(Authorization){
+  const promise = axios.get(`${BASE_URL}/habits/history/daily`,{
+    headers: {
+      'Authorization': `Bearer ${Authorization}`
+    }
+  });
+return promise;
+}
 
-export { postCadastro, postLogin, getHoje,getHabitos,postHabitos,deleteHabitos,postFeito,postDesfeito};
+export { postCadastro, postLogin, getHoje,getHabitos,postHabitos,deleteHabitos,postFeito,postDesfeito,getHistorico};

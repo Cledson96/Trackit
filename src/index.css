@@ -5,6 +5,7 @@
 
 input {
     width: 303px;
+    max-width: 80%;
     height: 45px;
     background: #FFFFFF;
     border: 1px solid #D5D5D5;
@@ -87,11 +88,15 @@ h3 {
 
 .fundo2 {
     padding-left: 17px;
-    padding-top: 28px;
     width: 100vw;
-    min-height: calc(100vh - 70px);
+    min-height: 100vh;
+    max-height: 100vh;
+   padding-bottom: 140px;
     background-color: #E5E5E5;
     margin: 0;
+    padding-top: 98px;
+    overflow: scroll;
+
 }
 
 .root {
