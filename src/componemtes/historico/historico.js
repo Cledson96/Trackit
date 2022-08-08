@@ -27,7 +27,7 @@ export default function Historico({ valor, dados }) {
             <Topo img={dados.image} />
             <div className="fundo2">
                 <h2>Histórico</h2>
-                <Calendar formatDay={(locale, date) => (dayjs('2018-08-08'), 'd')} onChange={onChange} value={value} />
+                <Calendar  onChange={onChange} value={value} />
             </div>
             <Footer valor={valor} />
         </>
