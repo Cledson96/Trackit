@@ -4,8 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { postLogin } from '../requisicao/requisicao'
 import { useState } from 'react';
 
-
-
 import imgcarregando from '../../img/carregando.gif'
 
 export default function Login({setdados}) {

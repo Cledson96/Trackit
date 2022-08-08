@@ -4,7 +4,7 @@ import Calendar from 'react-calendar';
 import React, { useState, useEffect } from 'react';
 import './historico.css'
 import { getHistorico } from "../requisicao/requisicao";
-import dayjs from 'dayjs';
+
 
 export default function Historico({ valor, dados }) {
     let token = localStorage.getItem("token");
@@ -12,14 +12,11 @@ export default function Historico({ valor, dados }) {
     
     
     console.log({value})
-    const [dias,setdias] = useState([])
+  
     useEffect(() => {
-        let resposta = getHistorico(token);
-        resposta.then((res) => {
-            setdias(res.data)
-            console.log(res.data)
-        })
-    }, [])
+       getHistorico(token);
+       
+    }, [token])
 
   
     return (

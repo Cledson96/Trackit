@@ -31,7 +31,6 @@ export default function Habitos({ dados, valor }) {
         let resposta = getHabitos(token)
         resposta.then((res) => {
             sethabitos(res.data)
-            console.log(res.data)
         });
         resposta.catch(() => alert("Tivemos um problema para atualizar seus habitos!!"))
     }, [token, renderiza]);
@@ -45,7 +44,6 @@ export default function Habitos({ dados, valor }) {
             setdias([])
         });
         resposta.catch(() => alert("Não foi possivel adicionar seu habito!!!"))
-
     };
 
 

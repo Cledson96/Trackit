@@ -11,7 +11,7 @@ function postLogin (body) {
     return promise;
 }
 function deleteHabitos (id,token) {
-  console.log(id,token)
+
   const promise = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,{
     headers: {
       'Authorization': `Bearer ${token}`
@@ -21,8 +21,7 @@ function deleteHabitos (id,token) {
 }
 
 function postHabitos (body,token) {
-  console.log(body);
-  console.log(token)
+  
   const promise = axios.post(`${BASE_URL}/habits`,body,{
     headers: {
       'Authorization': `Bearer ${token}`
@@ -51,8 +50,7 @@ function getHoje (Authorization) {
 }
 
 function postFeito (id,token) {
-  console.log(id);
-  console.log(token)
+  
   const promise = axios.post(`${BASE_URL}/habits/${id}/check`,"",{
     headers: {
       'Authorization': `Bearer ${token}`
@@ -61,8 +59,7 @@ function postFeito (id,token) {
   return promise;
 }
 function postDesfeito(id,token) {
-  console.log(id);
-  console.log(token)
+  
   const promise = axios.post(`${BASE_URL}/habits/${id}/uncheck`,"",{
     headers: {
       'Authorization': `Bearer ${token}`

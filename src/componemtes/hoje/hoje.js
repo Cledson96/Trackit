@@ -21,13 +21,13 @@ export default function Hoje({ dados, valor, setvalor }) {
 
     function confirma(id) {
         let resposta = postFeito(id, token)
-        resposta.then((ref) => { setatualiza(ref); console.log(ref) })
-        resposta.catch((ref) => { console.log(ref); alert("Não foi possivel completar sua requisição!") })
+        resposta.then((ref) => { setatualiza(ref)})
+        resposta.catch(() => { alert("Não foi possivel completar sua requisição!") })
     }
     function desconfirma(id) {
         let resposta = postDesfeito(id, token)
-        resposta.then((ref) => { setatualiza(ref); console.log(ref) })
-        resposta.catch((ref) => { console.log(ref); alert("Não foi possivel completar sua requisição!") })
+        resposta.then((ref) => { setatualiza(ref) })
+        resposta.catch(() => { alert("Não foi possivel completar sua requisição!") })
     }
     useEffect(() => {
         let contagem = 0;
@@ -37,17 +37,16 @@ export default function Hoje({ dados, valor, setvalor }) {
             }
             setvalor((contagem / habitos.length) * 100);
         }
-    }, [habitos]
+    }, [habitos,setvalor]
     )
-    console.log(valor)
     useEffect(() => {
         let resposta = getHoje(token)
         resposta.then((res) => {
             sethabitos(res.data);
         });
         resposta.catch(() => alert("Tivemos um problema para recuperar seu habitos!!!"));
-    }, [atualiza]);
-    console.log(habitos)
+    }, [atualiza,token]);
+ 
     function zero(ref) {
         return (
             <div className="sequencia"><h4 className="sequencia" > Seu recorde:</h4> <h4 >{ref.highestSequence} {ref.highestSequence === 1 ? "dia" : "dias"} </h4></div>
