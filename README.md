@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+<h1 align="center"> Project Trackit </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Descrição
+### Português
 
-### `npm start`
+Projeto realizado como atividade no curso Developer fullstack Driven,colocando em pratica o aprendizado na biblioteca React-js.  
+Neste projeto foi construido uma aplicação completa de acompanhamento de hábitos, com cadastro, login e muitas bibliotecas 🙂
+Foi utilizada uma api do curso, para guardar e extrair informações dos hábitos.
+As tecnologias e bibliotecas utilizadas foram : 
+-React
+-Axios
+-React-router-dom
+-React-calendar
+-React-circular-progressbar
+-Dayjs
+-React-loader-spinner
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Inglês
+Project carried out as an activity in the Driven Fullstack Developer course, putting into practice the learning of the React-js library. In this project, a complete application for tracking habits was built, with registration, login, and many libraries 🙂. An API from the course was used to store and extract habit information. The technologies and libraries used were:
+-React
+-Axios
+-React-router-dom
+-React-calendar
+-React-circular-progressbar
+-Dayjs
+-React-loader-spinner
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Instalação e Execução
+### Português
+1. Clone este repositório: `git clone https://github.com/Cledson96/Trackit.git`
+2. Entre no diretório do projeto: `cd seu-projeto`
+3. Instale as dependências: `npm install`
+4. Execute o projeto: `npm start`
 
-### `npm test`
+### Inglês
+1. Clone this repository: `git clone https://github.com/Cledson96/Trackit.git`
+2. Navigate to the project directory: `cd your-project`
+3. Install dependencies: `npm install`
+4. Run the project: `npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Deploy
+`https://trackit-smoky.vercel.app/`
 
-### `npm run build`
+## Como contribuir
+### Português
+Você pode contribuir para este projeto de várias formas, como:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Reportando erros ou bugs
+- Sugerindo novas funcionalidades
+- Corrigindo erros ou implementando novas funcionalidades
+- Escrevendo documentação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Para contribuir, basta criar uma nova branch com suas alterações e enviar um pull request.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Inglês
 
-### `npm run eject`
+You can contribute to this project in various ways, such as:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Reporting errors or bugs
+Suggesting new features
+Correcting errors or implementing new features
+Writing documentation
+To contribute, simply create a new branch with your changes and send a pull request.
